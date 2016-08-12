@@ -15,7 +15,6 @@ ParticleDefinitions[GaugeES] = {
 	     LaTeX -> "H^+",
 	     OutputName -> "Hp" }},
 
-
   {VB,   { Description -> "B-Boson"}},
   {VG,   { Description -> "Gluon"}},
   {VWB,  { Description -> "W-Bosons"}},
@@ -29,14 +28,21 @@ ParticleDefinitions[GaugeES] = {
 
 ParticleDefinitions[EWSB] = {
 
-  {hh   ,  {  Description -> "Higgs"}},
+  {hh   ,  {  Description -> "Higgs" }},
   {Ah   ,  {  Description -> "Pseudo-Scalar Higgs"}},
   
-  {Hp,     {  Description -> "Charged Higgs"}},
+  {Hp,     {  Description -> "Charged Higgs",
+	      PDG -> {0},
+	      PDG.IX ->{0},
+	      Width -> {0},
+	      Mass -> {0},
+	      LaTeX -> {"H^+","H^-"},
+	      OutputName -> {"Hp","Hm"} }},
 
+ 
   {VP,   { Description -> "Photon"}},
-  {VZ,   { Description -> "Z-Boson"}},
-  {VWp,  { Description -> "W-Boson", Goldstone -> Hp[{1}] }},
+  {VZ,   { Description -> "Z-Boson", Goldstone -> Ah }},
+  {VWp,  { Description -> "W+ - Boson", Goldstone -> Hp}},
   {VG,   { Description -> "Gluon" }},
 
   {gP,   { Description -> "Photon Ghost"}},
@@ -49,25 +55,17 @@ ParticleDefinitions[EWSB] = {
   {Fu,   { Description -> "Up-Quarks"}},
   {Fe,   { Description -> "Leptons" }},
   {Fv,   { Description -> "Neutrinos" }},
-
+ 
 };
 
 WeylFermionAndIndermediate =
   {
-    {H,      {   PDG -> {0},
-                 Width -> 0, 
-                 Mass -> Automatic,
-                 LaTeX -> "H",
-                 OutputName -> "" }},
-
-    {Hp1,      {LaTeX -> "H_p"}},
-    {etp,     {LaTeX -> "\\eta_p"}},
-    {H0,      {LaTeX -> "H_0"}},
-    {et0,     {LaTeX -> "\\eta_0"}},
+    {H,      {LaTeX -> "H"}},
+    {Et,     {LaTeX -> "\\eta"}},
     {sigma1, {LaTeX -> "\\sigma_1"}},
     {sigma2, {LaTeX -> "\\sigma_2"}},
-    {phi1,   {LaTeX -> "\\phi_1"}},
-    {phi2,   {LaTeX -> "\\phi_2"}},
+    {phi1, {LaTeX -> "\\phi_1"}},
+    {phi2, {LaTeX -> "\\phi_2"}},
     {dR,     {LaTeX -> "d_R" }},
     {eR,     {LaTeX -> "e_R" }},
     {lep,    {LaTeX -> "l" }},

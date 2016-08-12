@@ -26,8 +26,8 @@ FermionFields[[3]] = {d , 3, conj[dR],     1/3, 1, -3};
 FermionFields[[4]] = {u , 3, conj[uR],    -2/3, 1, -3};
 FermionFields[[5]] = {e , 3, conj[eR],       1, 1,  1};
 
-ScalarFields[[1]] =  {H,  1, {Hp1, H0},     1/2, 2,  1};
-ScalarFields[[2]] =  {Et, 1, {etp,et0},     1/2, 2,  1};
+ScalarFields[[1]] =  {H,  1, {Hp, H0},     1/2, 2,  1};
+ScalarFields[[2]] =  {Et, 1, {etp,et0},    1/2, 2,  1};
 
 (*---------------DEFINITION------------------*)
 
@@ -68,8 +68,7 @@ DEFINITION[EWSB][VEVs]=
 
 DEFINITION[EWSB][MatterSector]=
   { {{phi1, phi2}, {hh, ZH}},
-    {{sigma1, sigma2}, {Ah, ZA}}, 
-    {{conj[Hp1],conj[etp]},{Hp,ZP}},
+    {{sigma1, sigma2}, {Ah, ZA}},
     {{{dL}, {conj[dR]}}, {{DL,Vd}, {DR,Ud}}},
     {{{uL}, {conj[uR]}}, {{UL,Vu}, {UR,Uu}}},
     {{{eL}, {conj[eR]}}, {{EL,Ve}, {ER,Ue}}}
