@@ -15,6 +15,17 @@ ParticleDefinitions[GaugeES] = {
 	     LaTeX -> "H^+",
 	     OutputName -> "Hp" }},
 
+  {et0, {    PDG -> {0},
+	     Width -> 0,
+	     Mass -> Automatic,
+	     LaTeX -> "\\eta^0",
+	     OutputName -> "et0" }},
+
+  {etp, {    PDG -> {0},
+	     Width -> 0,
+	     Mass -> Automatic,
+	     LaTeX -> "\\eta^+",
+	     OutputName -> "etp" }},
 
   {VB,   { Description -> "B-Boson"}},
   {VG,   { Description -> "Gluon"}},
@@ -29,15 +40,45 @@ ParticleDefinitions[GaugeES] = {
 
 ParticleDefinitions[EWSB] = {
 
-  {hh   ,  {  Description -> "Higgs"}},
-  {Ah   ,  {  Description -> "Pseudo-Scalar Higgs"}},
+  {hh   ,  {  Description -> "Higgs",
+	      PDG -> {25},
+	      PDG.IX -> {101000001},
+	      Mass -> Automatic }},
+  {Ah   ,  {  Description -> "Pseudo-Scalar Higgs",
+	      PDG -> {0},
+	      PDG.IX ->{0},
+	      Mass -> {0},
+	      Width -> {0} }},
+  {Hp,     {  Description -> "Charged Higgs",
+	      PDG -> {0},
+	      PDG.IX ->{0},
+	      Width -> {0},
+	      Mass -> {0},
+	      LaTeX -> {"H^+","H^-"},
+	      OutputName -> {"Hp","Hm"} }},
 
-  
-  {Hp,     {  Description -> "Charged Higgs"}},
+  {etR,   {  Description -> "CP-even eta scalar",
+	     PDG -> {35},
+	     Mass -> LesHouches,
+	     ElectricCharge -> 0,
+	     LaTeX -> "\\eta_R",
+	     OutputName -> "etR" }},
+  {etI,   {  Description -> "CP-odd eta scalar",
+	     PDG -> {36},
+	     Mass -> LesHouches,
+	     ElectricCharge -> 0,
+	     LaTeX -> "\\eta_I",
+	     OutputName -> "etI" }},
+  {etp,   {  Description -> "Charged eta scalar",
+	     PDG -> {37},
+	     Mass -> LesHouches,
+	     ElectricCharge -> 1,
+	     LaTeX -> "\\eta^+",
+	     OutputName -> "etp" }},
 
   {VP,   { Description -> "Photon"}},
-  {VZ,   { Description -> "Z-Boson"}},
-  {VWp,  { Description -> "W-Boson", Goldstone -> Hp[{1}] }},
+  {VZ,   { Description -> "Z-Boson", Goldstone -> Ah }},
+  {VWp,  { Description -> "W+ - Boson", Goldstone -> Hp}},
   {VG,   { Description -> "Gluon" }},
 
   {gP,   { Description -> "Photon Ghost"}},
@@ -50,25 +91,19 @@ ParticleDefinitions[EWSB] = {
   {Fu,   { Description -> "Up-Quarks"}},
   {Fe,   { Description -> "Leptons" }},
   {Fv,   { Description -> "Neutrinos" }},
+  {Chi,  { Description -> "Singlet Fermions",
+	   PDG -> {1012,1014,1016},
+	   Mass -> LesHouches,
+	   ElectricCharge -> 0,
+	   LaTeX -> "N",
+	   OutputName -> "N" }}
 
 };
 
 WeylFermionAndIndermediate =
   {
-    {H,      {   PDG -> {0},
-                 Width -> 0, 
-                 Mass -> Automatic,
-                 LaTeX -> "H",
-                 OutputName -> "" }},
-
-    {Hp1,      {LaTeX -> "H_p"}},
-    {etp,     {LaTeX -> "\\eta_p"}},
-    {H0,      {LaTeX -> "H_0"}},
-    {et0,     {LaTeX -> "\\eta_0"}},
-    {sigma1, {LaTeX -> "\\sigma_1"}},
-    {sigma2, {LaTeX -> "\\sigma_2"}},
-    {phi1,   {LaTeX -> "\\phi_1"}},
-    {phi2,   {LaTeX -> "\\phi_2"}},
+    {H,      {LaTeX -> "H"}},
+    {Et,     {LaTeX -> "\\eta"}},
     {dR,     {LaTeX -> "d_R" }},
     {eR,     {LaTeX -> "e_R" }},
     {lep,    {LaTeX -> "l" }},
@@ -84,5 +119,8 @@ WeylFermionAndIndermediate =
     {EL,     {LaTeX -> "E_L" }},
     {DL,     {LaTeX -> "D_L" }},
     {UL,     {LaTeX -> "U_L" }},
+    {X0,     {LaTeX -> "X^0"}},
     {VL,     {LaTeX -> "V_L" }},
+    {n,      {LaTeX -> "N" }},
+    {nR,     {LaTeX -> "\\nu_R" }}
   };

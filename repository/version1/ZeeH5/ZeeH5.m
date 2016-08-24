@@ -1,7 +1,7 @@
 Off[General::spell]
 
-Model`Name      = "IDM";
-Model`NameLaTeX = "Inert doublet Model";
+Model`Name      = "ZeeH";
+Model`NameLaTeX = "ZeeH Model";
 Model`Authors   = "D. Restrepo: Based on Sctogogenic by N. Rojas, A. Vicente";
 Model`Date      = "2016-07-27";
 
@@ -14,23 +14,22 @@ Model`Date      = "2016-07-27";
 
 (*------------Particle Content---------------*)
 
-(* Global Symmetries *)
-Global[[1]] = {Z[2], Z2};
-
 (*--------------Gauge Groups-----------------*)
-Gauge[[1]]={B,   U[1], hypercharge, g1, False, 1};
-Gauge[[2]]={WB, SU[2], left,        g2, True , 1};
-Gauge[[3]]={G,  SU[3], color,       g3, False, 1};
+Gauge[[1]]={B,   U[1], hypercharge, g1, False};
+Gauge[[2]]={WB, SU[2], left,        g2, True };
+Gauge[[3]]={G,  SU[3], color,       g3, False};
 
 (*--------------Matter Fields----------------*)
-FermionFields[[1]] = {q , 3, {uL, dL},     1/6, 2,  3, 1};
-FermionFields[[2]] = {l , 3, {vL, eL},    -1/2, 2,  1, 1};
-FermionFields[[3]] = {d , 3, conj[dR],     1/3, 1, -3, 1};
-FermionFields[[4]] = {u , 3, conj[uR],    -2/3, 1, -3, 1};
-FermionFields[[5]] = {e , 3, conj[eR],       1, 1,  1, 1};
+FermionFields[[1]] = {q , 3, {uL, dL},     1/6, 2,  3};
+FermionFields[[2]] = {l , 3, {vL, eL},    -1/2, 2,  1};
+FermionFields[[3]] = {d , 3, conj[dR],     1/3, 1, -3};
+FermionFields[[4]] = {u , 3, conj[uR],    -2/3, 1, -3};
+FermionFields[[5]] = {e , 3, conj[eR],       1, 1,  1};
 
-ScalarFields[[1]] =  {H,  1, {Hp, H0},     1/2, 2,  1,  1};
-ScalarFields[[2]] =  {Et, 1, {etp,et0},    1/2, 2,  1, -1};
+ScalarFields[[1]] =  {H,  1, {Hp, H0},     1/2, 2,  1};
+ScalarFields[[2]] =  {Et, 1, {etp,et0},    1/2, 2,  1};
+ScalarFields[[3]] =  {Hc, 1, Hs,            -1, 1,  1};
+
 
 (*---------------DEFINITION------------------*)
 
@@ -44,14 +43,18 @@ DEFINITION[GaugeES][LagrangianInput]=
     {LagH     ,      {AddHC->False}},
     {LagEt    ,      {AddHC->False}},
     {LagHEt   ,      {AddHC->False}},
-    {LagHEtHC ,      {AddHC->True}}
+    {LagHEtHC ,      {AddHC->True}},
+    {LagHc    ,      {AddHC->False}},
+    {LagHcHC  ,      {AddHC->True}}
   };
 
-LagFer   = Yd conj[H].d.q + Ye conj[H].e.l + Yu H.u.q;
+LagFer   = Yd conj[H].d.q + Ye conj[H].e.l + Yu Et.u.q + epsD conj[Et].d.q + epsE conj[Et].e.l + epsU H.u.q;
 LagH     = -(+ mH2 conj[H].H     +  lambda1 conj[H].H.conj[H].H );
 LagEt    = -(+ mEt2 conj[Et].Et  +  lambda2 conj[Et].Et.conj[Et].Et );
 LagHEt   = -(+ lambda3 conj[H].H.conj[Et].Et + lambda4 conj[H].Et.conj[Et].H );
-LagHEtHC = -(+ 1/2 lambda5 conj[H].Et.conj[H].Et );
+LagHEtHC = -(+ 1/2 lambda5 conj[H].Et.conj[H].Et + lambda6 conj[H].H.conj[H].Et + lambda7 conj[Et].Et.conj[H].Et - m12 conj[H].Et);
+LagHc    = -(+ lambda8 conj[Hc].Hc.conj[H].H + lambda9 conj[Hc].Hc.conj[Et].Et +  mh conj[Hc].Hc + lambdah conj[Hc].Hc.conj[Hc].Hc);
+LahHcHC  = -(+ lambda10 conj[Hc].Hc.conj[Et].H + mu conj[Hc].conj[H].conj[Et]);
 
 (* Gauge Sector *)
 
@@ -98,5 +101,3 @@ DEFINITION[EWSB][GaugeES]=
     Fe2 ->{  0, Fe2}
   };
 
-
-SetOptions[MakeCHep,UseRunningCoupling -> False];

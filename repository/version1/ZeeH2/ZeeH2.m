@@ -3,7 +3,7 @@ Off[General::spell]
 Model`Name      = "ZeeH";
 Model`NameLaTeX = "ZeeH Model";
 Model`Authors   = "D. Restrepo: Based on Sctogogenic by N. Rojas, A. Vicente";
-Model`Date      = "2016-08-23";
+Model`Date      = "2016-07-27";
 
 (* "28-04-2015 (first implementation)" *)
 (* "25-05-2015 (removed mixings in scalar sector)" *)
@@ -28,7 +28,6 @@ FermionFields[[5]] = {e , 3, conj[eR],       1, 1,  1};
 
 ScalarFields[[1]] =  {H,  1, {Hp, H0},     1/2, 2,  1};
 ScalarFields[[2]] =  {Et, 1, {etp,et0},    1/2, 2,  1};
-ScalarFields[[3]] =  {Sc, 1, Sh,            -1, 1,  1}
 
 (*---------------DEFINITION------------------*)
 
@@ -42,20 +41,14 @@ DEFINITION[GaugeES][LagrangianInput]=
     {LagH     ,      {AddHC->False}},
     {LagEt    ,      {AddHC->False}},
     {LagHEt   ,      {AddHC->False}},
-    {LagHEtHC ,      {AddHC->True}},
-    {LagSc    ,      {AddHC->False}},
-    {LagScHC  ,      {AddHC->True}}
+    {LagHEtHC ,      {AddHC->True}}
   };
 
-LagFer   = Yd conj[H].d.q + Ye conj[H].e.l + Yu Et.u.q + + Yh conj[Sc].l.l + epsD conj[Et].d.q + epsE conj[Et].e.l + epsU H.u.q;
-LagH     = -(+ mH2 conj[H].H     +  1/2 lambda1 conj[H].H.conj[H].H );
-LagEt    = -(+ mEt2 conj[Et].Et  +  1/2 lambda2 conj[Et].Et.conj[Et].Et );
+LagFer   = Yd conj[H].d.q + Ye conj[H].e.l + Yu H.u.q;
+LagH     = -(+ mH2 conj[H].H     +  lambda1 conj[H].H.conj[H].H );
+LagEt    = -(+ mEt2 conj[Et].Et  +  lambda2 conj[Et].Et.conj[Et].Et );
 LagHEt   = -(+ lambda3 conj[H].H.conj[Et].Et + lambda4 conj[H].Et.conj[Et].H );
-LagHEtHC = -(+ 1/2 lambda5 conj[H].Et.conj[H].Et + lambda6 conj[H].H.conj[H].Et + lambda7 conj[Et].Et.conj[H].Et - M12 conj[H].Et );
-LagSc    = -(+ lambda8 conj[Sc].Sc.conj[H].H + lambda9 conj[Sc].Sc.conj[Et].Et +  Mh conj[Sc].Sc + lambdah conj[Sc].Sc.conj[Sc].Sc ); 
-LagScHC  = -(+ lambda10 conj[Sc].Sc.conj[H].Et +  Mu Sc.H.Et );
-
-
+LagHEtHC = -(+ 1/2 lambda5 conj[H].Et.conj[H].Et + lambda6 conj[H].H.conj[H].Et + lambda7 conj[Et].Et.conj[H].Et);
 
 (* Gauge Sector *)
 
@@ -69,14 +62,12 @@ DEFINITION[EWSB][GaugeSector] =
 
 DEFINITION[EWSB][VEVs]=
   {
-    {H0,  {v, 1/Sqrt[2]}, {Ah, \[ImaginaryI]/Sqrt[2]}, {phi1, 1/Sqrt[2]}},
-    {et0, {vv, 1/Sqrt[2]}, {etI, \[ImaginaryI]/Sqrt[2]}, {phi2, 1/Sqrt[2]}}
+    {H0,  {v, 1/Sqrt[2]}, {Ah, \[ImaginaryI]/Sqrt[2]}, {hh, 1/Sqrt[2]}},
+    {et0, {0, 0}, {etI, \[ImaginaryI]/Sqrt[2]}, {etR, 1/Sqrt[2]}}
 };
 
 DEFINITION[EWSB][MatterSector]=
-  { {{phi1, phi2}, {hh, ZH}},
-    {{conj[Sh], Hp, etp}, {Hm, ZP}},
-    {{vL}, {VL, Vv}},
+  {
     {{{dL}, {conj[dR]}}, {{DL,Vd}, {DR,Ud}}},
     {{{uL}, {conj[uR]}}, {{UL,Vu}, {UR,Uu}}},
     {{{eL}, {conj[eR]}}, {{EL,Ve}, {ER,Ue}}}
@@ -91,7 +82,7 @@ DEFINITION[EWSB][DiracSpinors]=
   Fd  -> {  DL, conj[DR]},
   Fe  -> {  EL, conj[ER]},
   Fu  -> {  UL, conj[UR]},
-  Fv  -> {  VL, conj[VL]}
+  Fv  -> {  vL, 0}
 };
 
 DEFINITION[EWSB][GaugeES]=

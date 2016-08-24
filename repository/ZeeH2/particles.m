@@ -15,6 +15,13 @@ ParticleDefinitions[GaugeES] = {
 	     LaTeX -> "H^+",
 	     OutputName -> "Hp" }},
 
+  {Sh,  {    PDG -> {0},
+	     Width -> 0,
+	     Mass -> Automatic,
+	     FeynArtsNr -> 3,
+	     LaTeX -> "Sh^+",
+	     OutputName -> "Sh" }},
+
   {et0, {    PDG -> {0},
 	     Width -> 0,
 	     Mass -> Automatic,
@@ -40,45 +47,58 @@ ParticleDefinitions[GaugeES] = {
 
 ParticleDefinitions[EWSB] = {
 
-  {hh   ,  {  Description -> "Higgs",
-	      PDG -> {25},
-	      PDG.IX -> {101000001},
-	      Mass -> Automatic }},
-  {Ah   ,  {  Description -> "Pseudo-Scalar Higgs",
-	      PDG -> {0},
-	      PDG.IX ->{0},
-	      Mass -> {0},
-	      Width -> {0} }},
-  {Hp,     {  Description -> "Charged Higgs",
-	      PDG -> {0},
-	      PDG.IX ->{0},
-	      Width -> {0},
-	      Mass -> {0},
-	      LaTeX -> {"H^+","H^-"},
-	      OutputName -> {"Hp","Hm"} }},
+  (*{hh   ,  {  Description -> "Higgs",
+		PDG -> {25},
+		PDG.IX -> {101000001},
+		Mass -> Automatic }},*)
 
-  {etR,   {  Description -> "CP-even eta scalar",
+  {hh ,  { Description -> "Higgs"}},
+  {Ah ,  { Description -> "Pseudo-Scalar Higgs",
+	   PDG -> {0},
+	   PDG.IX ->{0},
+	   Mass -> {0},
+	   Width -> {0} }},
+
+  {Hm,   { Description -> "Charged Higgs",
+	   PDG -> {0, 37, 900037},
+	   PDG.IX -> {0, 100000601,  100000602},
+	   Width -> {0, External, External},
+	   Mass -> {0, LesHouches, LesHouches},
+	   ElectricCharge -> 1,
+	   Latex -> {"H^+","H^-","Sh^+"},
+	   OutputName -> {"Hp","Hm","Sh"}  }},
+
+  {Sh,     {  Description -> "Charged higgs scalar",
+	      PDG -> {100000603},
+	      Mass -> LesHouches,
+	      ElectricCharge -> -1,
+	      LaTeX -> "\\S_h^+",
+	      OutputName -> "Sh" }}, 
+  
+  (*  {etR,   {  Description -> "CP-even eta scalar",
 	     PDG -> {35},
 	     Mass -> LesHouches,
 	     ElectricCharge -> 0,
 	     LaTeX -> "\\eta_R",
-	     OutputName -> "etR" }},
+		 OutputName -> "etR" }},*)
+  
   {etI,   {  Description -> "CP-odd eta scalar",
 	     PDG -> {36},
 	     Mass -> LesHouches,
 	     ElectricCharge -> 0,
 	     LaTeX -> "\\eta_I",
 	     OutputName -> "etI" }},
-  {etp,   {  Description -> "Charged eta scalar",
+
+  (*  {etp,   {  Description -> "Charged eta scalar",
 	     PDG -> {37},
 	     Mass -> LesHouches,
 	     ElectricCharge -> 1,
 	     LaTeX -> "\\eta^+",
-	     OutputName -> "etp" }},
+		 OutputName -> "etp" }},*)
 
   {VP,   { Description -> "Photon"}},
   {VZ,   { Description -> "Z-Boson", Goldstone -> Ah }},
-  {VWp,  { Description -> "W+ - Boson", Goldstone -> Hp}},
+  {VWp,  { Description -> "W+ - Boson", Goldstone -> Hm[{1}] }},
   {VG,   { Description -> "Gluon" }},
 
   {gP,   { Description -> "Photon Ghost"}},
@@ -101,7 +121,8 @@ ParticleDefinitions[EWSB] = {
 };
 
 WeylFermionAndIndermediate =
-  {
+  { {phi1, {LaTeX -> "\\phi_1"}},
+    {phi2, {LaTeX -> "\\phi_2"}},
     {H,      {LaTeX -> "H"}},
     {Et,     {LaTeX -> "\\eta"}},
     {dR,     {LaTeX -> "d_R" }},

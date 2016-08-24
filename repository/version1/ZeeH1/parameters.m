@@ -24,18 +24,6 @@ ParameterDefinitions = {
 					      {0, Mass[Fe,2],0},
 					      {0, 0, Mass[Fe,3]}}}},
 
-  {epsE,  {LaTeX ->"\\epsilon_e",
-	   OutputName -> epsE,
-	   LesHouches -> epsE }},                                                                           
-
-  {epsD,  {LaTeX ->"\\epsilon_d",
-	   OutputName -> epsD,
-	   LesHouches -> epsD }},
-
-  {epsU,  {LaTeX ->"\\epsilon_u",
-	   OutputName -> epsU,
-	   LesHouches -> epsU }},
-  
   {ThetaW,    { Description -> "Weinberg-Angle",
 		DependenceNum -> ArcSin[Sqrt[1 - Mass[VWp]^2/Mass[VZ]^2]]}},
 
@@ -55,11 +43,6 @@ ParameterDefinitions = {
 		 DependenceNum -> Sqrt[4*Mass[VWp]^2/(g2^2)],
 		 DependenceSPheno -> None  }},
 
-  {ZH,        { Description->"Scalar-Mixing-Matrix"}},
-  {ZA,        { Description->"Pseudo-Scalar-Mixing-Matrix"}},
-  {ZP,        { Description->"Charged-Mixing-Matrix"}},  
-
-  
   {mH2,        { Description -> "SM Higgs Mass Parameter"}},
 
   {mEt2, {LaTeX -> "m_\\eta^2",
@@ -87,15 +70,6 @@ ParameterDefinitions = {
 	       LesHouches -> {HDM,6},
 	       OutputName-> lam5 }},
 
-  {lambda6,   {LaTeX -> "\\lambda_6",
-	       LesHouches -> {HDM,7},
-	       OutputName-> lam6 }},
-
-  {lambda7,   {LaTeX -> "\\lambda_7",
-	       LesHouches -> {HDM,8},
-	       OutputName-> lam7 }},
-
-  
   (* Fermion sector *)
 
   {Yn,   {LaTeX -> "Y_N",

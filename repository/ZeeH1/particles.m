@@ -15,6 +15,13 @@ ParticleDefinitions[GaugeES] = {
 	     LaTeX -> "H^+",
 	     OutputName -> "Hp" }},
 
+  {Sh,  {    PDG -> {0},
+	     Width -> 0,
+	     Mass -> Automatic,
+	     FeynArtsNr -> 3,
+	     LaTeX -> "Sh^+",
+	     OutputName -> "Sh" }},
+
   {et0, {    PDG -> {0},
 	     Width -> 0,
 	     Mass -> Automatic,
@@ -40,15 +47,18 @@ ParticleDefinitions[GaugeES] = {
 
 ParticleDefinitions[EWSB] = {
 
-  {hh   ,  {  Description -> "Higgs",
-	      PDG -> {25},
-	      PDG.IX -> {101000001},
-	      Mass -> Automatic }},
+  (*{hh   ,  {  Description -> "Higgs",
+		PDG -> {25},
+		PDG.IX -> {101000001},
+		Mass -> Automatic }},*)
+
+  {hh ,  { Description -> "Higgs"}},
   {Ah   ,  {  Description -> "Pseudo-Scalar Higgs",
 	      PDG -> {0},
 	      PDG.IX ->{0},
 	      Mass -> {0},
 	      Width -> {0} }},
+
   {Hp,     {  Description -> "Charged Higgs",
 	      PDG -> {0},
 	      PDG.IX ->{0},
@@ -57,18 +67,27 @@ ParticleDefinitions[EWSB] = {
 	      LaTeX -> {"H^+","H^-"},
 	      OutputName -> {"Hp","Hm"} }},
 
-  {etR,   {  Description -> "CP-even eta scalar",
+  {Sh,     {  Description -> "Charged higgs scalar",
+	      PDG -> {100000603},
+	      Mass -> LesHouches,
+	      ElectricCharge -> -1,
+	      LaTeX -> "\\S_h^+",
+	      OutputName -> "Sh" }}, 
+  
+  (*  {etR,   {  Description -> "CP-even eta scalar",
 	     PDG -> {35},
 	     Mass -> LesHouches,
 	     ElectricCharge -> 0,
 	     LaTeX -> "\\eta_R",
-	     OutputName -> "etR" }},
+		 OutputName -> "etR" }},*)
+  
   {etI,   {  Description -> "CP-odd eta scalar",
 	     PDG -> {36},
 	     Mass -> LesHouches,
 	     ElectricCharge -> 0,
 	     LaTeX -> "\\eta_I",
 	     OutputName -> "etI" }},
+
   {etp,   {  Description -> "Charged eta scalar",
 	     PDG -> {37},
 	     Mass -> LesHouches,
@@ -101,7 +120,8 @@ ParticleDefinitions[EWSB] = {
 };
 
 WeylFermionAndIndermediate =
-  {
+  { {phi1, {LaTeX -> "\\phi_1"}},
+    {phi2, {LaTeX -> "\\phi_2"}},
     {H,      {LaTeX -> "H"}},
     {Et,     {LaTeX -> "\\eta"}},
     {dR,     {LaTeX -> "d_R" }},

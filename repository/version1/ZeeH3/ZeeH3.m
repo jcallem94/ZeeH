@@ -15,9 +15,9 @@ Model`Date      = "2016-07-27";
 (*------------Particle Content---------------*)
 
 (*--------------Gauge Groups-----------------*)
-Gauge[[1]]={B,   U[1], hypercharge, g1, False, 1};
-Gauge[[2]]={WB, SU[2], left,        g2, True , 1};
-Gauge[[3]]={G,  SU[3], color,       g3, False, 1};
+Gauge[[1]]={B,   U[1], hypercharge, g1, False};
+Gauge[[2]]={WB, SU[2], left,        g2, True };
+Gauge[[3]]={G,  SU[3], color,       g3, False};
 
 (*--------------Matter Fields----------------*)
 FermionFields[[1]] = {q , 3, {uL, dL},     1/6, 2,  3};
@@ -44,7 +44,7 @@ DEFINITION[GaugeES][LagrangianInput]=
     {LagHEtHC ,      {AddHC->True}}
   };
 
-LagFer   = Yd conj[H].d.q + Ye conj[H].e.l + Yu H.u.q + epsD conj[Et].d.q + epsE conj[Et].e.l + epsU H.u.q;
+LagFer   = Yd conj[H].d.q + Ye conj[H].e.l + Yu Et.u.q + epsD conj[Et].d.q + epsE conj[Et].e.l + epsU H.u.q;
 LagH     = -(+ mH2 conj[H].H     +  lambda1 conj[H].H.conj[H].H );
 LagEt    = -(+ mEt2 conj[Et].Et  +  lambda2 conj[Et].Et.conj[Et].Et );
 LagHEt   = -(+ lambda3 conj[H].H.conj[Et].Et + lambda4 conj[H].Et.conj[Et].H );
